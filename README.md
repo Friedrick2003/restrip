@@ -100,6 +100,16 @@ App runs at: `http://localhost:3000`
 
 ---
 
+## 🌐 Live Production URLs
+
+**Frontend (Vercel):** https://client-frn6kczqo-friedrick2003s-projects.vercel.app
+
+**Backend API (Railway):** https://restrip-backend-production.up.railway.app/api
+
+**Backend Health:** https://restrip-backend-production.up.railway.app/api/health
+
+---
+
 ## ☁️ Deploy to Cloud (Railway + MongoDB Atlas)
 
 ### MongoDB Atlas
