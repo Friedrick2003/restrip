@@ -168,7 +168,17 @@ export default function Home() {
           {[["Collection",["Resorts","City Hotels","Heritage","Eco-Luxury"]],["Company",["About Us","Press","Careers","Partners"]],["Support",["Help Center","Cancellations","Privacy","Terms"]]].map(([title,links]) => (
             <div key={title}>
               <div style={{ fontSize:10, letterSpacing:2.5, color:"#b8943f", textTransform:"uppercase", fontWeight:600, marginBottom:20 }}>{title}</div>
-              {links.map(l => <div key={l} style={{ color:"#9a8e7e", fontSize:13, marginBottom:12, cursor:"pointer" }}>{l}</div>)}
+              {links.map(l => (
+                <div 
+                  key={l} 
+                  style={{ color:"#9a8e7e", fontSize:13, marginBottom:12, cursor: l === "About Us" ? "pointer" : "default", transition: "color 0.3s" }}
+                  onClick={() => l === "About Us" && navigate("/about")}
+                  onMouseEnter={(e) => l === "About Us" && (e.target.style.color = "#b8943f")}
+                  onMouseLeave={(e) => l === "About Us" && (e.target.style.color = "#9a8e7e")}
+                >
+                  {l}
+                </div>
+              ))}
             </div>
           ))}
         </div>

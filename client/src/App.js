@@ -7,6 +7,7 @@ import Hotels from "./pages/Hotels";
 import HotelDetail from "./pages/HotelDetail";
 import { AuthPage } from "./pages/Auth";
 import { BookingConfirm, MyBookings, Admin } from "./pages/Other";
+import About from "./pages/About";
 
 function ProtectedRoute({ children, adminOnly = false }) {
   const { user, loading } = useAuth();
@@ -23,6 +24,7 @@ function AppRoutes() {
       <Navbar />
       <Routes>
         <Route path="/"                element={<Home />} />
+        <Route path="/about"           element={<About />} />
         <Route path="/hotels"          element={<Hotels />} />
         <Route path="/hotels/:id"      element={<HotelDetail />} />
         <Route path="/auth"            element={<AuthPage />} />

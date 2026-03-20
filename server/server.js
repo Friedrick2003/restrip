@@ -17,11 +17,28 @@ const app = express();
 
 // ── Security middleware ───────────────────────────────────────────
 app.use(helmet());
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  "http://localhost:3000",
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:3000",
+  origin: (origin, callback) => {
+    // Allow non-browser tools (no Origin header) and explicitly approved origins.
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    // Allow Vercel preview/production deployment URLs.
+    if (/^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("CORS blocked for this origin."));
+  },
   credentials: true,
-  methods: ["GET","POST","PUT","PATCH","DELETE"],
-  allowedHeaders: ["Content-Type","Authorization"],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
 // ── General middleware ────────────────────────────────────────────
