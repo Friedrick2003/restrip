@@ -81,9 +81,9 @@ export function MyBookings() {
           </div>
         )}
         {data.map(b => (
-          <div key={b._id} style={{ border:"1px solid rgba(184,148,63,0.2)", marginBottom:3, display:"flex", overflow:"hidden", background:"#111009" }}>
-            <img src={b.hotelId?.photos?.[0]} alt="" style={{ width:200, height:160, objectFit:"cover", flexShrink:0 }} />
-            <div style={{ padding:"24px 32px", flex:1, display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+          <div key={b._id} className="d-flex-mobile-col" style={{ border:"1px solid rgba(184,148,63,0.2)", marginBottom:3, display:"flex", overflow:"hidden", background:"#111009" }}>
+            <img className="w-mobile-100 h-mobile-auto" src={b.hotelId?.photos?.[0]} alt="" style={{ width:200, height:160, objectFit:"cover", flexShrink:0 }} />
+            <div className="room-info" style={{ padding:"24px 32px", flex:1, display:"flex", justifyContent:"space-between", alignItems:"center" }}>
               <div>
                 <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:24, fontWeight:600, color:"#f5efe6", marginBottom:4 }}>{b.hotelId?.name}</h3>
                 <p style={{ color:"#9a8e7e", fontSize:12, marginBottom:16 }}>{b.roomId?.title} · {b.hotelId?.city}</p>
@@ -346,10 +346,10 @@ export function Admin() {
         </div>
       </div>
 
-      <div style={{ padding:"48px 64px", maxWidth:1200 }}>
+      <div className="p-mobile-20" style={{ padding:"48px 64px", maxWidth:1200 }}>
         {tab==="overview" && (
           <>
-            <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:3, marginBottom:48 }}>
+            <div className="stats-grid" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)", gap:3, marginBottom:48 }}>
               {stats.map(([label,value,icon]) => (
                 <div key={label} className="stat-card">
                   <div style={{ fontSize:28, marginBottom:12 }}>{icon}</div>
@@ -406,7 +406,7 @@ export function Admin() {
         )}
 
         {tab==="hotels" && (
-          <div style={{ display:"grid", gridTemplateColumns:"1.3fr 1fr", gap:24 }}>
+          <div className="grid-mobile-1" style={{ display:"grid", gridTemplateColumns:"1.3fr 1fr", gap:24 }}>
             <div style={{ border:"1px solid rgba(184,148,63,0.2)", background:"#111009" }}>
               <div style={{ padding:"20px 24px", borderBottom:"1px solid rgba(184,148,63,0.15)", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
                 <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:28, color:"#f5efe6" }}>Properties</h3>
@@ -470,7 +470,7 @@ export function Admin() {
         )}
 
         {tab==="rooms" && (
-          <div style={{ display:"grid", gridTemplateColumns:"1.2fr 1fr", gap:24 }}>
+          <div className="grid-mobile-1" style={{ display:"grid", gridTemplateColumns:"1.2fr 1fr", gap:24 }}>
             <div style={{ border:"1px solid rgba(184,148,63,0.2)", background:"#111009" }}>
               <div style={{ padding:"20px 24px", borderBottom:"1px solid rgba(184,148,63,0.15)", display:"flex", justifyContent:"space-between", alignItems:"center", gap:12 }}>
                 <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:28, color:"#f5efe6" }}>Rooms</h3>

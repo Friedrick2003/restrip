@@ -32,11 +32,11 @@ function Hero() {
           <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top,rgba(5,4,3,0.7) 0%,transparent 50%)" }} />
         </div>
       ))}
-      <div style={{ position:"absolute", inset:0, zIndex:2, display:"flex", flexDirection:"column", justifyContent:"center", padding:"0 80px", maxWidth:780 }}>
-        <div className="section-tag fade-in" style={{ marginBottom:18 }}>
+      <div className="hero-content" style={{ position:"absolute", inset:0, zIndex:2, display:"flex", flexDirection:"column", justifyContent:"center", padding:"0 80px", maxWidth:780 }}>
+        <div className="section-tag hero-tag fade-in" style={{ marginBottom:18 }}>
           <span className="gold-line" />Exclusive Luxury Collection
         </div>
-        <h1 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(4rem,7vw,7rem)", fontWeight:300, color:"#fff", lineHeight:1, marginBottom:6 }} className="fade-in">
+        <h1 className="fade-in hero-title" style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(4rem,7vw,7rem)", fontWeight:300, color:"#fff", lineHeight:1, marginBottom:6 }}>
           {slides[slide].title}<br />
           <em style={{ fontWeight:600, color:"#d4af6a" }}>{slides[slide].sub}</em>
         </h1>
@@ -55,18 +55,18 @@ function Hero() {
         ))}
       </div>
       {/* Booking bar */}
-      <div id="booking-bar" style={{ position:"absolute", bottom:0, left:0, right:0, zIndex:3, background:"rgba(10,8,6,0.95)", backdropFilter:"blur(20px)", borderTop:"1px solid rgba(184,148,63,0.2)", padding:"28px 64px", display:"flex", gap:0, alignItems:"flex-end" }}>
+      <div id="booking-bar" className="booking-bar" style={{ position:"absolute", bottom:0, left:0, right:0, zIndex:3, background:"rgba(10,8,6,0.95)", backdropFilter:"blur(20px)", borderTop:"1px solid rgba(184,148,63,0.2)", padding:"28px 64px", display:"flex", gap:0, alignItems:"flex-end" }}>
         {[{ label:"Destination", key:"city", type:"text", ph:"City, country or property" },
           { label:"Check-In",    key:"checkin", type:"date" },
           { label:"Check-Out",   key:"checkout", type:"date" }].map(({ label,key,type,ph }, i) => (
-          <div key={key} style={{ flex:1, borderRight:"1px solid rgba(184,148,63,0.2)", padding:`0 28px 0 ${i===0?0:28}px` }}>
+          <div key={key} className="booking-item" style={{ flex:1, borderRight:"1px solid rgba(184,148,63,0.2)", padding:`0 28px 0 ${i===0?0:28}px` }}>
             <div style={{ fontSize:9, letterSpacing:2.5, color:"#b8943f", textTransform:"uppercase", fontWeight:600, marginBottom:8 }}>{label}</div>
             <input className="input-dark" type={type} placeholder={ph} value={form[key]}
               onChange={e => setForm(f => ({ ...f, [key]:e.target.value }))}
               style={{ background:"transparent", border:"none", borderBottom:"1px solid rgba(184,148,63,0.2)", borderRadius:0, padding:"4px 0" }} />
           </div>
         ))}
-        <div style={{ flex:0.6, padding:"0 28px" }}>
+        <div className="booking-item" style={{ flex:0.6, padding:"0 28px" }}>
           <div style={{ fontSize:9, letterSpacing:2.5, color:"#b8943f", textTransform:"uppercase", fontWeight:600, marginBottom:8 }}>Guests</div>
           <select className="input-dark" value={form.guests} onChange={e => setForm(f => ({ ...f, guests:e.target.value }))}
             style={{ background:"transparent", border:"none", borderBottom:"1px solid rgba(184,148,63,0.2)", borderRadius:0, padding:"4px 0" }}>
@@ -85,8 +85,8 @@ function FeaturedHotels({ hotels }) {
   const navigate = useNavigate();
   if (!hotels?.length) return null;
   return (
-    <section style={{ padding:"100px 64px", background:"#111009" }}>
-      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:56 }}>
+    <section className="featured-section" style={{ padding:"100px 64px", background:"#111009" }}>
+      <div className="featured-header" style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:56 }}>
         <div>
           <div className="section-tag" style={{ marginBottom:14 }}><span className="gold-line" />Curated Collection</div>
           <h2 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(2.5rem,4vw,4rem)", fontWeight:300, color:"#f5efe6", lineHeight:1.1 }}>
@@ -95,8 +95,8 @@ function FeaturedHotels({ hotels }) {
         </div>
         <button className="btn-outline" onClick={() => navigate("/hotels")}>View All Properties</button>
       </div>
-      <div style={{ display:"grid", gridTemplateColumns:"1.4fr 1fr 1fr", gridTemplateRows:"auto auto", gap:3 }}>
-        <div className="hotel-card" style={{ gridRow:"1/3", height:580 }} onClick={() => navigate(`/hotels/${hotels[0]._id}`)}>
+      <div className="featured-grid" style={{ display:"grid", gridTemplateColumns:"1.4fr 1fr 1fr", gridTemplateRows:"auto auto", gap:3 }}>
+        <div className="hotel-card featured-main-card" style={{ gridRow:"1/3", height:580 }} onClick={() => navigate(`/hotels/${hotels[0]._id}`)}>
           <img src={hotels[0].photos?.[0]} alt={hotels[0].name} />
           <div className="overlay" />
           <div className="card-content">
@@ -134,10 +134,10 @@ export default function Home() {
     <>
       <Hero />
       {/* Stats */}
-      <section style={{ padding:"80px 64px", background:"#111009", borderTop:"1px solid rgba(184,148,63,0.2)", borderBottom:"1px solid rgba(184,148,63,0.2)" }}>
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)" }}>
+      <section className="featured-section" style={{ padding:"80px 64px", background:"#111009", borderTop:"1px solid rgba(184,148,63,0.2)", borderBottom:"1px solid rgba(184,148,63,0.2)" }}>
+        <div className="stats-grid" style={{ display:"grid", gridTemplateColumns:"repeat(4,1fr)" }}>
           {[["6,000+","Properties Worldwide"],["120+","Countries"],["50,000+","Happy Guests"],["★ 4.9","Average Rating"]].map(([val,label],i) => (
-            <div key={i} style={{ textAlign:"center", padding:"20px 0", borderRight: i<3?"1px solid rgba(184,148,63,0.2)":"none" }}>
+            <div key={i} className="stats-item" style={{ textAlign:"center", padding:"20px 0", borderRight: i<3?"1px solid rgba(184,148,63,0.2)":"none" }}>
               <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(2rem,3.5vw,3.5rem)", fontWeight:600, color:"#d4af6a", lineHeight:1 }}>{val}</div>
               <div style={{ fontSize:11, letterSpacing:2, color:"#9a8e7e", textTransform:"uppercase", marginTop:8 }}>{label}</div>
             </div>
@@ -158,8 +158,8 @@ export default function Home() {
         </div>
       </section>
       {/* Footer */}
-      <footer style={{ background:"#0a0806", padding:"60px 64px 32px", borderTop:"1px solid rgba(184,148,63,0.2)" }}>
-        <div style={{ display:"grid", gridTemplateColumns:"1.5fr 1fr 1fr 1fr", gap:48, marginBottom:48 }}>
+      <footer className="footer-section" style={{ background:"#0a0806", padding:"60px 64px 32px", borderTop:"1px solid rgba(184,148,63,0.2)" }}>
+        <div className="footer-grid" style={{ display:"grid", gridTemplateColumns:"1.5fr 1fr 1fr 1fr", gap:48, marginBottom:48 }}>
           <div>
             <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:24, fontWeight:700, color:"#f5efe6", letterSpacing:3 }}>RESTRIP</div>
             <div style={{ fontSize:9, letterSpacing:3, color:"#b8943f", textTransform:"uppercase", marginBottom:16 }}>Luxury Collection</div>
@@ -182,7 +182,7 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div style={{ borderTop:"1px solid rgba(184,148,63,0.2)", paddingTop:24, display:"flex", justifyContent:"space-between", fontSize:11, color:"#9a8e7e" }}>
+        <div className="footer-bottom" style={{ borderTop:"1px solid rgba(184,148,63,0.2)", paddingTop:24, display:"flex", justifyContent:"space-between", fontSize:11, color:"#9a8e7e" }}>
           <span>© 2025 Restrip Luxury Collection. All rights reserved.</span>
           <span>Built with Node.js · React · MongoDB</span>
         </div>

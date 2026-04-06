@@ -25,8 +25,8 @@ export function AuthPage() {
   };
 
   return (
-    <div style={{ minHeight:"100vh", display:"flex" }}>
-      <div style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", padding:60, background:"#111009" }}>
+    <div className="d-flex-mobile-col" style={{ minHeight:"100vh", display:"flex" }}>
+      <div className="p-mobile-20" style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center", padding:60, background:"#111009" }}>
         <div style={{ width:"100%", maxWidth:400 }}>
           <div style={{ marginBottom:40 }}>
             <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:42, fontWeight:300, color:"#f5efe6", lineHeight:1 }}>{mode==="login"?"Welcome":"Join Us"}</div>
@@ -65,7 +65,7 @@ export function AuthPage() {
           </p>
         </div>
       </div>
-      <div style={{ flex:1, position:"relative", overflow:"hidden" }}>
+      <div className="hide-mobile" style={{ flex:1, position:"relative", overflow:"hidden" }}>
         <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1000&q=85" alt="" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
         <div style={{ position:"absolute", inset:0, background:"linear-gradient(to right,rgba(10,8,6,0.5),rgba(10,8,6,0.1))" }} />
         <div style={{ position:"absolute", bottom:64, left:56, right:56 }}>

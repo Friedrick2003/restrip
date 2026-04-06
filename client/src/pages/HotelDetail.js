@@ -71,9 +71,9 @@ export default function HotelDetail() {
         </div>
       </div>
 
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 360px" }}>
+      <div className="detail-layout" style={{ display:"grid", gridTemplateColumns:"1fr 360px" }}>
         {/* Left */}
-        <div style={{ padding:"56px 64px", borderRight:"1px solid rgba(184,148,63,0.2)" }}>
+        <div className="detail-main" style={{ padding:"56px 64px", borderRight:"1px solid rgba(184,148,63,0.2)" }}>
           <p style={{ color:"#9a8e7e", fontSize:15, lineHeight:1.9, marginBottom:36, maxWidth:600 }}>{hotel.description}</p>
           <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:48 }}>
             {hotel.amenities?.map(a => <span key={a} className="amenity-pill">{a}</span>)}
@@ -90,18 +90,18 @@ export default function HotelDetail() {
               const unavailable = form.checkin && form.checkout && room.hasAvailableRooms === false;
               return (
                 <div key={room._id || room.id}
-                  className={`room-card ${selRoom?._id === room._id ? "selected" : ""} ${unavailable ? "disabled" : ""}`}
+                  className={`room-card room-item ${selRoom?._id === room._id ? "selected" : ""} ${unavailable ? "disabled" : ""}`}
                   onClick={() => !unavailable && setSelRoom(selRoom?._id===room._id ? null : room)}
                   style={{ display:"flex", gap:0, opacity: unavailable?0.5:1 }}>
-                  <img src={room.photos?.[0] || "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80"}
+                  <img className="room-img" src={room.photos?.[0] || "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80"}
                     alt={room.title} style={{ width:160, height:120, objectFit:"cover", flexShrink:0 }} />
-                  <div style={{ padding:"20px 24px", flex:1, display:"flex", justifyContent:"space-between", alignItems:"center" }}>
+                  <div className="room-info" style={{ padding:"20px 24px", flex:1, display:"flex", justifyContent:"space-between", alignItems:"center" }}>
                     <div>
                       <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:22, fontWeight:600, color:"#f5efe6", marginBottom:6 }}>{room.title}</h3>
                       <p style={{ color:"#9a8e7e", fontSize:12, letterSpacing:0.5 }}>Up to {room.maxPeople} guests · {room.beds} bed{room.beds>1?"s":""}</p>
                       {unavailable && <p style={{ color:"#ef9a9a", fontSize:11, marginTop:4 }}>Not available for selected dates</p>}
                     </div>
-                    <div style={{ textAlign:"right" }}>
+                    <div className="room-price" style={{ textAlign:"right" }}>
                       <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:26, fontWeight:600, color:"#d4af6a" }}>{fmt(room.price)}</div>
                       <div style={{ fontSize:10, color:"#9a8e7e", letterSpacing:1 }}>PER NIGHT</div>
                     </div>
@@ -114,7 +114,7 @@ export default function HotelDetail() {
         </div>
 
         {/* Booking panel */}
-        <div style={{ padding:"56px 40px", background:"#111009", position:"sticky", top:80, height:"fit-content" }}>
+        <div className="detail-sidebar" style={{ padding:"56px 40px", background:"#111009", position:"sticky", top:80, height:"fit-content" }}>
           <div className="section-tag" style={{ marginBottom:16 }}><span className="gold-line" />Reserve</div>
           <h3 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:28, fontWeight:300, color:"#f5efe6", marginBottom:28 }}>Your Stay</h3>
 

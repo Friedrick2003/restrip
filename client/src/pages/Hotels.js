@@ -30,17 +30,17 @@ export default function Hotels() {
   return (
     <div style={{ minHeight:"100vh", paddingTop:80, background:"#0a0806" }}>
       {/* Header */}
-      <div style={{ background:"linear-gradient(135deg,#111009 0%,#1a1610 100%)", padding:"56px 64px 40px", borderBottom:"1px solid rgba(184,148,63,0.2)" }}>
+      <div className="hotels-header" style={{ background:"linear-gradient(135deg,#111009 0%,#1a1610 100%)", padding:"56px 64px 40px", borderBottom:"1px solid rgba(184,148,63,0.2)" }}>
         <div className="section-tag" style={{ marginBottom:12 }}><span className="gold-line" />Our Collection</div>
-        <h1 style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(2.5rem,5vw,5rem)", fontWeight:300, color:"#f5efe6" }}>
+        <h1 className="hotels-title" style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"clamp(2.5rem,5vw,5rem)", fontWeight:300, color:"#f5efe6" }}>
           Luxury <em style={{ fontWeight:600, color:"#d4af6a" }}>Properties</em>
         </h1>
         <p style={{ color:"#9a8e7e", marginTop:10, fontSize:13 }}>{hotels.length} exceptional properties</p>
       </div>
 
-      <div style={{ display:"flex" }}>
+      <div className="hotels-layout" style={{ display:"flex" }}>
         {/* Sidebar */}
-        <div style={{ width:280, flexShrink:0, borderRight:"1px solid rgba(184,148,63,0.2)", padding:"40px 32px", position:"sticky", top:80, height:"calc(100vh - 80px)", overflowY:"auto", background:"#111009" }}>
+        <div className="hotels-sidebar" style={{ width:280, flexShrink:0, borderRight:"1px solid rgba(184,148,63,0.2)", padding:"40px 32px", position:"sticky", top:80, height:"calc(100vh - 80px)", overflowY:"auto", background:"#111009" }}>
           <div style={{ fontSize:10, letterSpacing:2.5, color:"#b8943f", textTransform:"uppercase", fontWeight:600, marginBottom:28 }}>Refine Search</div>
 
           <div style={{ marginBottom:24 }}>
@@ -92,7 +92,7 @@ export default function Hotels() {
         </div>
 
         {/* Grid */}
-        <div style={{ flex:1, padding:"40px", display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(340px,1fr))", gap:3, alignContent:"start" }}>
+        <div className="hotels-grid" style={{ flex:1, padding:"40px", display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(340px,1fr))", gap:3, alignContent:"start" }}>
           {loading && <div style={{ gridColumn:"1/-1" }}><Spinner /></div>}
           {error && <div style={{ gridColumn:"1/-1", textAlign:"center", padding:"60px 0", color:"#ef9a9a" }}>Failed to load hotels: {error}</div>}
           {!loading && hotels.map(h => (

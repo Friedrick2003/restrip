@@ -20,7 +20,7 @@ export default function Navbar() {
   const go = (path) => navigate(path);
 
   return (
-    <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:200, background:bg,
+    <nav className="navbar" style={{ position:"fixed", top:0, left:0, right:0, zIndex:200, background:bg,
       backdropFilter: scrolled ? "blur(16px)" : "none",
       borderBottom: scrolled ? "1px solid rgba(184,148,63,0.2)" : "none",
       transition:"all .4s", padding:"22px 64px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
@@ -39,7 +39,7 @@ export default function Navbar() {
       </div>
 
       {/* Nav links */}
-      <div style={{ display:"flex", gap:36, alignItems:"center" }}>
+      <div className="nav-links" style={{ display:"flex", gap:36, alignItems:"center" }}>
         {[["Home","/"],["Hotels","/hotels"]].map(([label, path]) => (
           <button key={path} className={`nav-item ${location.pathname === path ? "active" : ""}`}
             onClick={() => go(path)}>{label}</button>
@@ -64,7 +64,7 @@ export default function Navbar() {
             </div>
           </div>
         ) : (
-          <button className="btn-primary" style={{ padding:"10px 24px", fontSize:10 }}
+          <button className="btn-primary hide-mobile" style={{ padding:"10px 24px", fontSize:10 }}
             onClick={() => go("/auth")}>Sign In</button>
         )}
       </div>
