@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+=======
+const BASE_URL = process.env.REACT_APP_API_URL || "https://restrip-backend.onrender.com/api";
+>>>>>>> origin/main
 
 let accessToken = null;
 export const setAccessToken = (t) => { accessToken = t; };
